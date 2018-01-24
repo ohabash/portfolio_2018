@@ -701,6 +701,7 @@ nav#projects, nav#convos{
     position: absolute;
     top: 0;
     // right: 0;
+    z-index: 2;
     background: rgba(#000, 0.5);
     img{
       height: 3em;
@@ -952,6 +953,16 @@ nav#projects, nav#convos{
         text-align: left !important;
         box-shadow: 1px 1px 18px rgba(#000, 0.3);
         font-size: 0.95em;
+        position: relative;
+        .editt{
+          position: absolute;
+          z-index: 1;
+          top:0;
+          left:0;
+          right:0;
+          bottom:0;
+          // background: red;
+        }
       }
       &.left{
         text-align: left;

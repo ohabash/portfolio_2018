@@ -21,6 +21,7 @@
 	  		<div class="level">
 	      		<img src="{{him.photoURL}}" alt="" class="img-responsive level-item">
 	      		<p class="level-item">To: {{him.displayName}}</p>
+	      		<p class="level-item hide">uid: {{him.uid}}</p>
 	  		</div>
 	    </div>
 
@@ -34,7 +35,10 @@
 		    			<i ng-hide="m['read_'+him.uid]" class="fa fa-eye-slash red" aria-hidden="true"></i>
 		    			<i ng-show="m['read_'+him.uid]" class="fa fa-eye green" aria-hidden="true"></i>
 		    		</p>
-		    		<div class="message-text" if="m.uid == u.uid" editable-text="m.text" e-ng-change="trigger_changes(true)" ng-model="m.text" onaftersave="messages.$save(m);">{{m.text}}</div>
+		    		<div class="message-text">
+		    			<div class="editt" ng-if="m.uid == u.uid" editable-text="m.text" ng-click="edit_off(false)" e-ng-change="trigger_changes(true)" ng-model="m.text" onaftersave="messages.$save(m);"></div>
+		    			<div class="mmmm">{{m.text}}</div>
+		    		</div>
 		    		<input class="hide">
 		    	</div>
 		    </div>

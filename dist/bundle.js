@@ -14519,6 +14519,9 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 
 	// on route change
 	$scope.$on('$routeChangeStart', function(next, current) { 
+		if(!$scope.admin){
+			$scope.edit_off(true);
+		}
 		$('.main-right.contain-it_chat').removeClass('contain-it_chat').addClass('contain-it');
 		$timeout( function(){
 			($scope.messages) ? $scope.countUnviewed() : console.log('no need to count');
@@ -15479,6 +15482,10 @@ app.controller('chat', function ($scope, Auth, $timeout, $rootScope, $firebaseOb
             e.preventDefault();
         }
     });
+
+    $timeout( function(){
+        $rootScope.notice("pencil-square-o","How to edit a message", "Just click on the blue text bubble to edit your message. ");
+    },20000);
 
 
 
