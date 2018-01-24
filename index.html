@@ -7,6 +7,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Omar Habash</title>
+	<meta name="description" content="Free Web tutorials">
+  	<meta name="keywords" content="HTML,CSS,FireBase,AngularJS,JavaScript,Omar,Habash">
+  	<meta name="author" content="Omar Habash">
+  	<meta property="og:title" content="Omar Habash" />
+	<meta property="og:type" content="Portfolio" />
+	<meta property="og:url" content="assets/img/profile-min.png" />
+	<meta property="og:image" content="assets/img/profile-min.png" />
+	<meta property="og:description" content="DEVELOPMENT TOOLS AND TECHNIQUES ARE CONSTANTLY CHANGING. I AM ALWAYS ON THE LOOKOUT FOR BETTER, MORE EFFICIANT WAYS TO IMPROVE MY APPROACH TO DEVELOPMENT. I AM READY TO DESIGN AND DEPLOY THE BEST AND MOST ELEGANT CODE FOR AN EXTRAORDINARY PRODUCT WORTHY OF THE TIME INVESTED; WITH A TEAM ON THE SAME MISSION TO DELIVER THE BEST POSSIBLE PRODUCT." />
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,100,300,700,600' rel='stylesheet' type='text/css'>
 	<link href="assets/dist/css/style.css" rel="stylesheet">
@@ -19,14 +27,63 @@
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
-<body ng-controller="main" class="{{mobile}}">
+<body ng-controller="main" class="{{mobile}} {{$bg}}" id="body">
 
-	
+<!-- meta -->
+<img src="assets/img/profile-min.png" alt="" class="hide">
+
+<!-- status -->
+<div class="dot hide">
+	<i ng-if="admin" class="fa fa-circle green" aria-hidden="true"></i>
+	<i ng-if="!admin" class="fa fa-circle red" aria-hidden="true"></i>
+</div>
+
+
+
+<div>
+	<!-- Tone1 -->
+	<audio id="slack" volume="0.5" preload="auto" controls style="position: absolute; opacity: 0; display:none;">
+	  <source src="assets/sound/slack.mp3" type="audio/wav">
+	</audio>
+	<audio id="bell" volume="0.5" preload="auto" controls style="position: absolute; opacity: 0; display:none;">
+	  <source src="assets/sound/bell.mp3" type="audio/wav">
+	</audio>
+	<audio id="swoosh" volume="0.1" preload="auto" controls style="position: absolute; opacity: 0; display:none;">
+	  <source src="assets/sound/swoosh.mp3" type="audio/wav">
+	</audio>
+</div>
+
+
 <div class="notice-control" ng-controller="notice">
-	<div ng-include="'partials/header.html'"></div>
 	<div id="notices"></div>
-	<ng-view id="view" autoscroll="true"></ng-view>
-	<div ng-include="'partials/footer.html'"></div>
+	<div class="logo hide">
+		<div class="container"><p>omar habash</p></div>
+	</div>
+	<div class="main-contain container">
+		<!-- #account-menu -->
+		<div ng-include id="account-menu" class="clearfix" src="'partials/account_menu.html'"></div>
+		<!-- main area -->
+		<div class="columns m0 is-mobile">
+			<div class="column main-left is-15 ">
+				<ng-include class="clearfix" src="'partials/aside.html'"></ng-include>
+			</div>
+		<!-- </div> -->
+		<!-- <div class="columns m0"> -->
+			<div class="column is-25 project-column">
+				<ng-include class="clearfix" src="'partials/project_nav.html'"></ng-include>
+			</div>
+			<div class="column is-25 convos-column">
+				<ng-include class="clearfix" src="'partials/convos.html'"></ng-include>
+			</div>
+			<div class="column main-right p0 contain-it">
+				<div class="main-right-contain">
+					<!-- <div class="column m0 p0"> -->
+						<div ng-view class="m0 p0 column1 view-animate"></div>
+					<!-- </div> -->
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 
@@ -40,16 +97,17 @@
 
 
     <!-- firebase -->
-	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="assets/bower/dropzone/dist/min/dropzone.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
 	<script>
 	  // Initialize Firebase
 	  var config = {
-	    apiKey: "AIzaSyC8-pRA3JLFRbKJl1z1yt_Buff5Kb5M_zg",
-	    authDomain: "tokuz-38ce7.firebaseapp.com",
-	    databaseURL: "https://tokuz-38ce7.firebaseio.com",
-	    projectId: "tokuz-38ce7",
-	    storageBucket: "tokuz-38ce7.appspot.com",
-	    messagingSenderId: "538697225199"
+	    apiKey: "AIzaSyD0BOE888FHGoz04M_jFEyQYv6wAb9-1BM",
+	    authDomain: "portfolio-ca685.firebaseapp.com",
+	    databaseURL: "https://portfolio-ca685.firebaseio.com",
+	    projectId: "portfolio-ca685",
+	    storageBucket: "portfolio-ca685.appspot.com",
+	    messagingSenderId: "856164915936"
 	  };
 	  firebase.initializeApp(config);
 	</script>

@@ -7,7 +7,7 @@
 // packages
 // @import 'packages/bs4/bootstrap';
 @import 'packages/bulma';
-@import 'packages/fontawesome/font-awesome';
+@import 'packages/fontawesome/fa';
 
 // inc
 @import 'inc/responsive';
@@ -19,6 +19,9 @@
 @import 'inc/editable';
 @import 'inc/pusher';
 @import 'inc/notice';
+@import 'inc/tooltip';
+@import 'inc/dropzone';
+@import 'inc/chat';
 
 // parts
 @import 'page/part_header';

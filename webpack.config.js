@@ -5,8 +5,15 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: here('dist')
-  }
+  },
 };
+
+function j() {
+new webpack.ProvidePlugin({
+'window.jQuery': 'jquery',
+'windows.$': 'jquery'
+});
+}
 
 
 function here(d) {

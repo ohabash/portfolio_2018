@@ -1,18 +1,68 @@
 #notices{
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 20em;
-	margin: 1em;
-    z-index: 999999;
-	.item1{
-		background: #fff;
-		font-size: 0.75em;
-		padding: 1em 2em;
-		margin-bottom: 5px;
-		color: $dark;
-		box-shadow: 0 0 9px rgba(#000, 0.3);
-		@include ani(0, fadeInRight, 0.5s);
+	position: absolute;
+	z-index: 99999;
+	bottom: 25px;
+	right: 31px;
+	width: 28em;
+	font-size: 0.85em;
+	.item2{
+		margin: 1em !important;
+		width: 100%;
+		background: rgba(#000,0.45);
+		opacity: 0.9;
+		border-radius: 0;
+		overflow: hidden;
+	    border: 1px solid #000;
+	    color: #fff;
+		.column.icon {
+			position: relative;
+			i{
+				@include centerer;
+				top: 120%;
+				&.fa-exclamation-triangle{
+					color: #FFC107;
+					font-size: 1.2em;
+					text-shadow: 1px 0px 0px rgba(#000, 0.3);
+				}
+				&.fa-magic {
+					color: $green;
+				}
+				&.fa-comments {
+					color: $blue;
+				}
+			}
+		}
+		p{margin: 0;}
+		.column.copy{
+			border-right: 1px solid rgba(#000, 0.95);
+			padding: 0.75rem;
+			p.t{
+				text-transform: capitalize;
+				font-weight: 600;
+			}
+			p.m{
+			}
+		}
+		.column.actions {
+			text-transform: capitalize;
+			text-align: center;
+			padding: 0;
+			position: relative;
+			@extend .is-2;
+			&:hover{
+				background: rgba(#000, 0.6);
+			}
+			&:active{
+			    background: #2178f3;
+				color: #fff;
+			}
+			.action{
+				padding: 0.6em 1em;
+				font-weight: 600;
+				overflow: hidden;
+				@include centerer;
+			}
+		}
 	}
 	@include bp(L-phone){
 		top: 0;

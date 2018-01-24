@@ -17,6 +17,19 @@ module.exports = function(grunt) {
     },
 
 
+    // minify JS
+    uglify: {
+      options: {
+        mangle: false
+      },
+      my_target: {
+        files: {
+          'dist/bundle.js': ['dist/bundle.js']
+        }
+      }
+    },
+
+
     //watch
     watch: {
       sass: {
@@ -38,7 +51,7 @@ module.exports = function(grunt) {
           cwd: 'assets/dist/css',
           src: ['*.css', '!*.min.css'],
           dest: 'assets/dist/css',
-          ext: '.min.css'
+          ext: '.css'
         }]
       }
     },
@@ -84,6 +97,7 @@ module.exports = function(grunt) {
 
   });
 
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -91,5 +105,6 @@ module.exports = function(grunt) {
 
   // grunt.registerTask('test', ['jshint', 'qunit']);
   //
+  grunt.registerTask('build', ['cssmin', 'uglify']);
   grunt.registerTask('default', ['browserSync', 'watch']);
 };

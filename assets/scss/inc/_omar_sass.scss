@@ -2,6 +2,16 @@
   padding: 1em;
 }
 
+.column.is-15, .column.is-15-tablet{
+  flex: none;
+  width: 9.66667%;
+}
+
+.column.is-25, .column.is-25-tablet{
+  flex: none;
+  width: 20%;
+}
+
 .disabled{
   opacity: 0.5;
   pointer-events: none;
@@ -25,7 +35,12 @@
 .tac{
   text-align: center
 }
-
+.taj{
+  text-align: justify;
+}
+.bold{
+  font-weight: bold;
+}
 .hvr-op{
   opacity: 0.5;
   &:hover{
@@ -37,6 +52,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
+.dib{
+  display: inline-block !important;
+}
 .p0{padding: 0 !important;}
 .m0{margin: 0 !important;}
 .mt0{margin-top: 0 !important;}
@@ -47,6 +65,7 @@
 .p2em{padding: 2em !important;}
 .p3em{padding: 3em !important;}
 .p4em{padding: 4em !important;}
+.pl0{padding-left: 0 !important;}
 .justify{text-align: justify;}
 .h100{height: 100%;}
 
@@ -268,16 +287,16 @@ ul.inline{
 
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: rgba(#000, 0.6);
+  color: rgba(#fff, 0.3);
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: rgba(#000, 0.6);
+  color: rgba(#fff, 0.3);
 }
 :-ms-input-placeholder { /* IE 10+ */
-  color: rgba(#000, 0.6);
+  color: rgba(#fff, 0.3);
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: rgba(#000, 0.6);
+  color: rgba(#fff, 0.3);
 }
 
 

@@ -1,20 +1,19 @@
 // basically repeat above
-$dark: #333;
-$darker: #333;
+$dark: #282C37;
 $light: #efefef;
-$green: #00A87B;
+$green: #28BA8B;
 $yellow: #FFBB3B;
 $red: #FF4633;
 $white: #FFFFFF;
 $black: #000000;
-$blue: #2178F4;
+$blue: #0093FF;
 $purple: #460f54;
 $orange: #ed6c24;
+$dgray: #333;
 
 
 $colors:
 	"dark" $dark,
-	"darker" $darker,
 	"light" $light,
 	"green" $green,
 	"yellow" $yellow,
@@ -23,7 +22,8 @@ $colors:
 	"black" $black,
 	"blue" $blue,
 	"purple" $purple,
-	"orange" $orange
+	"orange" $orange,
+	"dgray" $dgray
 ;
 
 
@@ -42,7 +42,7 @@ $colors:
 	}
 	// .color-bg
 	.#{nth($color, 1)}-bg {
-		background: nth($color, 2);
+		background: nth($color, 2) !important;
 	}
 }
 
@@ -62,8 +62,6 @@ $colors:
 	background-image: -webkit-linear-gradient($deg, $c1, $c2) !important;
 	background-image: linear-gradient($deg, $c1, $c2) !important;
 }
-
-
 
 
 
