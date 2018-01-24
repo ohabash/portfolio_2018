@@ -12,11 +12,11 @@ app.controller('downloads', function ($scope, $location, Auth, $timeout, $route,
             "type" : "PDF"
         },{
            "name" : "Letter of Recommendation",
-            "url" : "https://www.dropbox.com/s/i6203mqueyr86ra/Omar-Habash-Recommendation%20%283%29.docx?dl=1",
+            "url" : "https://www.dropbox.com/s/so7r94j17xollee/jy-reccomendation.pdf?dl=1",
             // "img" : "https://cdn0.iconfinder.com/data/icons/seo-smart-pack/128/grey_new_seo2-07-512.png",
             'icon' : 'thumbs-up',
-            "updated" : "July 2014",
-            "type" : "docx"
+            "updated" : "January 2018",
+            "type" : "pdf"
         },{
            "name" : "SUCCESS - MidYear Review",
             "url" : "https://www.dropbox.com/s/bvpk4eo103ejsmd/2017_midyear_omarhabash.pdf?dl=1",
@@ -31,7 +31,14 @@ app.controller('downloads', function ($scope, $location, Auth, $timeout, $route,
             'icon' : 'trophy',
             "updated" : "December 2017",
             "type" : "pdf"
-        }
+        },{
+           "name" : "Letter of Recommendation",
+            "url" : "https://www.dropbox.com/s/i6203mqueyr86ra/Omar-Habash-Recommendation%20%283%29.docx?dl=1",
+            // "img" : "https://cdn0.iconfinder.com/data/icons/seo-smart-pack/128/grey_new_seo2-07-512.png",
+            'icon' : 'thumbs-up',
+            "updated" : "July 2014",
+            "type" : "docx"
+        },
 	]
 
 	$scope.locked = function() {

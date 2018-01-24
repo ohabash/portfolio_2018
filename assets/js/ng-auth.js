@@ -130,6 +130,7 @@ app.controller('auth', function ($scope, $timeout, $location, $rootScope, Auth, 
       }
       console.log('firebaseUser:',firebaseUser.user)
         $location.path('/');
+        // $rootScope.slack("NEW ACCOUNT: "+firebaseUser.user.displayName);
         $scope.addProfile(firebaseUser.user);
         if(firebaseUser.user.email == "contactomarnow@gmail.com") {
           $rootScope.admin = true;
