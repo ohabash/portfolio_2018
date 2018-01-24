@@ -1,6 +1,4 @@
-# angularjs-grunt-bulma-firebase-Authentication
-
-This is my favorite frontend environment. It's a great start for most simple websites. Includes the following:
+# Omar Habash's Portfolio 2018
 
  * jQuery
  * firebase authentication (ready for db use)
@@ -18,11 +16,11 @@ you will need `git-cli` `npm` and `grunt before starting`
 
 # Use Instructions
 
-* download this repo `git clone https://github.com/ohabash/Bulma-grunt-admin.git`
+* download this repo `git clone https://github.com/ohabash/portfolio_2018.git`
 
-* `cd` to root and `npm install`
+* `cd` to root (portfolio_2018) and `npm install`
 
-* start grunt __watch__ and __browserSync__ tasks with `grunt`
+* to open in your browser simply run `grunt` in the root
 
-* your browser should pop up serving this content on `http://localhost:3000/`. Try to edit the scss to see it in action
+* your browser should pop up serving this content on `http://localhost:<open_port>/`. Try to edit the scss to see it in action
 
