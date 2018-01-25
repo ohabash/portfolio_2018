@@ -149,6 +149,13 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 
 	// on route change
 	$scope.$on('$routeChangeStart', function(next, current) { 
+		$timeout(function(){
+		if($scope.busy_obj){
+			console.log('its on')
+			$scope.busy_obj[$rootScope.profile.uid] = false;
+			$scope.busy_obj.$save();
+		}
+		},2000);
 		if(!$scope.admin){
 			$scope.edit_off(true);
 		}
@@ -248,7 +255,10 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 			$scope.last[talking_to.uid] = m[len];
 		});
 		$timeout(function(){
-			// $scope.watch();
+		if(typeof $scope.busy_obj[$rootScope.profile.uid] == 'undefined'){
+			$scope.busy_obj[$rootScope.profile.uid] = false;
+			$scope.busy_obj.$save();
+		}
 		},2000);
 	};
 

@@ -693,7 +693,16 @@ nav#projects, nav#convos{
 }
 
 
-
+a.privacy{
+  position: absolute;
+  width: 100%;
+  text-align: right;
+  text-transform: capitalize;
+  font-size: 0.8em;
+  bottom: 0;
+  padding: 0.5em;
+  color: rgba(#fff,0.4);
+}
 
 
 //=========== chat ===========//

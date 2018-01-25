@@ -46,7 +46,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="p-body columns">
+		<div class="p-body columns" ng-init="ll()">
 			<div class="column gallery-col">
 				<!-- <h2>Gallery</h2> -->
 				<form ng-if="admin" class="dropzone" id="upload"> </form>
@@ -54,7 +54,8 @@
 					<div class="columns" ng-repeat="pic in project.pics">
 						<a class="column" href="gallery/{{project.$id}}/{{$index}}">
 							<div class="overlay"><i class="fa fa-search"></i></div>
-							<img src="{{pic.value}}">
+							<!-- <img src="{{pic.value}}"> -->
+							<img class="lazy" src="assets/img/rings.svg" data-original="{{pic.value}}">
 						</a>
 						<div class="column">
 							<p

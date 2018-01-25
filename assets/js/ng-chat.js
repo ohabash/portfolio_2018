@@ -28,9 +28,11 @@ app.controller('chat', function ($scope, Auth, $timeout, $rootScope, $firebaseOb
         }
     });
 
-    $timeout( function(){
-        $rootScope.notice("pencil-square-o","How to edit a message", "Just click on the blue text bubble to edit your message. ");
-    },20000);
+        $timeout( function(){
+    if($scope.u){
+            $rootScope.notice("pencil-square-o","How to edit a message", "Just click on the blue text bubble to edit your message. ");
+    }
+        },20000);
 
 
 

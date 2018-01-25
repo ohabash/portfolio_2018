@@ -10960,6 +10960,16 @@ nav#projects, nav#convos {
   .main-right .main-right-contain {
     height: 100%; }
 
+a.privacy {
+  position: absolute;
+  width: 100%;
+  text-align: right;
+  text-transform: capitalize;
+  font-size: 0.8em;
+  bottom: 0;
+  padding: 0.5em;
+  color: rgba(255, 255, 255, 0.4); }
+
 .who-container {
   position: absolute;
   top: 0;

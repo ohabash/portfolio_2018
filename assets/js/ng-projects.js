@@ -20,6 +20,13 @@ app.controller('projects', function ($scope, $routeParams, $route, $rootScope, $
 		$rootScope.slack('OH: '+who+' visited '+loc)
 	}
 
+	$scope.ll = function() {
+		// console.log(this.$index)
+		// $timeout(function() {
+		// 	$('img.lazy').lazyload();
+		// }, 2000);
+	}
+
 	$scope.get_dropzone = function(id) {
 		if($rootScope.admin){
 			$timeout(function() {

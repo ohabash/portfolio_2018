@@ -21,6 +21,7 @@
     "angular-route": "1.4.0",
     "angularfire": "~2.3.0",
     "jquery": "~3.2.1",
-    "angular-moment": "^1.2.0"
+    "angular-moment": "^1.2.0",
+    "jquery_lazyload": "jquery.lazyload#^1.9.7"
   }
 }

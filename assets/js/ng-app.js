@@ -82,6 +82,9 @@ app.config(function ($routeProvider, $locationProvider){
 			templateUrl: 'partials/views/mobile.html',
 			activeClass: 'mobile'
 		})
+		.when('/privacy', {
+			templateUrl: 'partials/views/privacy.html',
+		})
 		.when('/downloads', {
 			controller: 'downloads',
 			templateUrl: 'partials/views/downloads.html',
@@ -150,6 +153,23 @@ app.factory("Auth", ["$firebaseAuth",
     return $firebaseAuth();
   }
 ]);
+
+// lazy
+app.directive('lazy', function($timeout) {
+    return {
+      restrict: 'C',
+      link: function (scope, elm) {
+        $timeout(function() {
+          $(elm).lazyload({
+            effect: 'fadeIn',
+            effectspeed: 500,
+            event: 'loadImage',
+            'skip_invisible': false
+          });
+        }, 1000);
+      }
+    };
+  });
 
 
 require('./ng-controller.js');
