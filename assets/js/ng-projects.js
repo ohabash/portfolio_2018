@@ -3,6 +3,8 @@
 
 app.controller('projects', function ($scope, $routeParams, $route, $rootScope, $location, $timeout, $firebaseObject, $firebaseArray) {
 	
+	$rootScope.ACTIVE('projects');
+
 	// routeParams
 	$scope.p = $routeParams.p;
 	$scope.indx = $routeParams.indx;

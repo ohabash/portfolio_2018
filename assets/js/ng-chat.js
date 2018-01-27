@@ -3,6 +3,7 @@
 // ListenContrller
 app.controller('chat', function ($scope, Auth, $timeout, $rootScope, $firebaseObject, $firebaseArray) {
 
+    $rootScope.ACTIVE('chat');
 
 	$('.main-right.contain-it').removeClass('contain-it').addClass('contain-it_chat');
 	$('#talk1').addClass('contain-it pr');

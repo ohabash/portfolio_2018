@@ -6,7 +6,7 @@
 		<!-- ng-repeat skills -->
 		<div class="column skill-item is-2" ng-repeat="skill in skills | filter:search:strict | orderBy:'name'">
 			<div class="img-contain">
-				<img editable-text="skill.img" e-ng-change="trigger_changes1(true)" ng-model="skill.img" src="{{skill.img}}" alt="" class="img-responsive">
+				<img editable-text="skill.img" e-ng-change="trigger_changes1(true)" ng-model="skill.img" ng-src="assets/img/rings.svg" alt="" class="img-responsive lazy" data-original="{{skill.img}}">
 			</div>
 			<div class="name-contain">
 				<p class="skill-name" editable-text="skill.name" e-ng-change="trigger_changes1(true)" ng-model="skill.name" onaftersave="skills.$save(skill);">{{skill.name || 'untitled'}}</p>

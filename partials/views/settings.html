@@ -1,14 +1,10 @@
 <div id="settings">
 	<h2>background</h2>
-	<div class="background-columns columns">
-		<div class="columns">
-			<a ng-click="bg('bg3');alertmeb()"><img src="assets/img/bg3.png" alt="" class="img-responsive"></a>
-		</div>
-		<div class="columns">
-			<a ng-click="bg('bg2');alertmeb()"><img src="assets/img/bg2.png" alt="" class="img-responsive"></a>
-		</div>
-		<div class="columns">
-			<a ng-click="bg('bg4');alertmeb()"><img src="assets/img/bg4.png" alt="" class="img-responsive"></a>
+	<div class="background-columns columns w100">
+		<div class="columns is-4" ng-repeat="i in bgs">
+			<a ng-click="bg(i);alertmeb()">
+				<img class="lazy" ng-src="assets/img/rings.svg" data-original="assets/img/{{i}}.png" alt="" class="img-responsive">
+			</a>
 		</div>
 	</div>
 </div>

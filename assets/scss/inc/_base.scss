@@ -129,6 +129,17 @@ input{
   }
 }
 
+.pacewheel{
+  text-align: center;
+  margin-top: 5vh;
+  display: none;
+  padding: 2em;
+  opacity: 0.3;
+}
+body.pace-running .pacewheel{
+  display: block
+}
+
 
 
 //======== #account-menu ========//

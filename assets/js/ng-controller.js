@@ -13,6 +13,7 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 	// backgrounds
 	$scope.$bg = 'bg3';
 	$scope.bg = function(bg) {
+		console.log(bg)
 		$scope.$bg = bg;
 	};
 	

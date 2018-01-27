@@ -10220,7 +10220,7 @@ label.panel-block:hover {
 .opens, body, #auth .auth-container .log-in input {
   font-family: 'PT Sans', 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif; }
 
-.mono, h2, #account-menu .account-contain, #aside nav#team ul.teams a span, #aside nav#team ul.teams a .mission-content .contact a:hover, .mission-content .contact #aside nav#team ul.teams a a:hover, nav#projects ul.sidenav li a, nav#convos ul.sidenav li a, .logo, .project-container .p-head .button.save, .project-container .p-head .title-column p.date, .project-container .p-body .gallery-col .p-gallery a.more, .project-container .links a, #project-gallery .navi, #project-gallery .img-desc, #skills > .columns .column.skill-item .name-contain p.skill-name, #skills > .columns .column.skill-item button.save, .mission-content h1 span, .mission-content h1 .contact a:hover, .mission-content .contact h1 a:hover, .mission-content .contact a, .downloads-content .item p {
+.mono, h2, #account-menu .account-contain, #aside nav#team ul.teams a span, #aside nav#team ul.teams a .mission-content .contact a:hover, .mission-content .contact #aside nav#team ul.teams a a:hover, nav#projects ul.sidenav li a, nav#convos ul.sidenav li a, .logo, .project-container .p-head .button.save, .project-container .p-head .title-column p.date, .project-container .p-body .gallery-col .p-gallery a.more, .project-container .links a, #project-gallery .navi, #project-gallery .img-desc, #skills > .columns .column.skill-item .name-contain p.skill-name, #skills > .columns .column.skill-item button.save, .mission-content h1 span, .mission-content h1 .contact a:hover, .mission-content .contact h1 a:hover, .mission-content .contact a, .downloads-content .item p, #notices .item2 .column.copy a {
   font-family: 'Source Code Pro', monospace;
   text-transform: uppercase;
   font-size: 0.6em;
@@ -10635,6 +10635,16 @@ h2 {
 input.minimal {
   background: transparent;
   border: 0; }
+
+.pacewheel {
+  text-align: center;
+  margin-top: 5vh;
+  display: none;
+  padding: 2em;
+  opacity: 0.3; }
+
+body.pace-running .pacewheel {
+  display: block; }
 
 #account-menu {
   text-align: right;
@@ -14294,6 +14304,11 @@ a.editable-empty:focus {
       #notices .item2 .column.copy p.t {
         text-transform: capitalize;
         font-weight: 600; }
+      #notices .item2 .column.copy a {
+        color: #FFBB3B;
+        font-weight: bold;
+        font-size: 0.9em;
+        font-style: underline; }
     #notices .item2 .column.actions {
       text-transform: capitalize;
       text-align: center;

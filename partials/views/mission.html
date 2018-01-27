@@ -1,10 +1,29 @@
 <style type="text/css">
-	.contain-it{
-		/*background: transparent !important;*/
-		position: relative;
-	}
+.contain-it{
+	/*background: transparent !important;*/
+	position: relative;
+}
+.pacemask{
+  text-align: center;
+  display: block;
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background: #282C37;
+  z-index: 9999;
+}
+.pacemask img{
+	margin-top: -3vh;
+    width: 15%;
+}
+body.pace-done .pacemask{
+  display: none;
+}
 </style>
 
+<div class="pacemask"><img class="centerer" src="assets/img/rings.svg"></div>
 <div class="mission-content">
 	<div class="centerer">
 		<!-- <h1>Welcome to <br><span class="green">Omar Habash's Portfolio</span></h1> -->

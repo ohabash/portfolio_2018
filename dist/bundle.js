@@ -75,6 +75,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // import {$,jQuery} from './../bower/jquery/dist/jquery.min.js';
 window.$ = window.jQuery = __webpack_require__(1);
 window.moment = __webpack_require__(3);
+// import './pace.js';
 
 // import './notice.js';
 
@@ -227,7 +228,7 @@ app.run(["$rootScope", "$location", function($rootScope, $location) {
   $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
     if (error === "AUTH_REQUIRED") {
       $location.path("/login");
-      $rootScope.notice('user-times',"Login to Chat", "I need to know who you are.")
+      $rootScope.notice('user-times',"<a href=\"/login\">login</a> to Chat", "I need to know who you are.")
       console.log('AUTH_REQUIRED')
     }
   });
@@ -14431,6 +14432,7 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 	// backgrounds
 	$scope.$bg = 'bg3';
 	$scope.bg = function(bg) {
+		console.log(bg)
 		$scope.$bg = bg;
 	};
 	
@@ -15007,6 +15009,7 @@ var TheMenu = (function(){
 
 app.controller('mission', function ($scope, $location, Auth, $timeout, $route, $rootScope, $location) {
 	// console.log('mission')
+	$rootScope.ACTIVE('mission');
 	$timeout( function(){
 		if(!$rootScope.u){
 			$rootScope.notice("universal-access",'Welcom to my Portfolio',"login to get full access.");
@@ -15021,6 +15024,7 @@ app.controller('mission', function ($scope, $location, Auth, $timeout, $route, $
 app.controller('downloads', function ($scope, $location, Auth, $timeout, $route, $rootScope, $location) {
 	// console.log('downloads')
 	
+    $rootScope.ACTIVE('downloads');
 
 	$scope.downloads = [
 		{
@@ -15063,7 +15067,7 @@ app.controller('downloads', function ($scope, $location, Auth, $timeout, $route,
 
 	$scope.locked = function() {
 		$rootScope.slack('OH: Download rejected.')
-		$rootScope.notice("lock",'Download Locked — 550', "please login to download.");
+		$rootScope.notice("lock",'Download Locked — 550', "please <a href=\"/login\">login</a> to download.");
 	}
 
 	$scope.downloaded = function(i) {
@@ -15089,6 +15093,10 @@ app.controller('mobile', function ($scope, Auth, $timeout, $rootScope, $firebase
 
 app.controller('settings', function ($scope, $rootScope, $location) {
 	console.log("ng-chat.js");
+	$rootScope.ACTIVE();
+
+
+	$scope.bgs = ['bg2','bg3','bg4'];
 	
 	$scope.alertmeb = function() {
 		if(!$rootScope.admin){
@@ -15127,35 +15135,11 @@ app.controller('nav', function ($scope, $timeout, $route, $rootScope, $location)
 	];
 
     // needed to set active0
-    $scope.ACTIVE = function () {
-      $timeout(function() {
-        // console.log('ACTIVE()');
-        // active class
-        if($route.current.$$route){
-        	// console.log('exists');
-	        var z = $route.current.$$route.originalPath.replace("/","x");
-	        $("[data-path]").removeClass('active0');
-	        var lnk = $("[data-path='"+z+"']");
-	        lnk.addClass('active0');
-        }else{
-        	console.error('404');
-        }
-        
-        // sub-nav
-        // $('nav.sub').addClass('hide');
-        // var cur = lnk.find('span').text();
-        // console.log(cur)
-        // $('nav#'+cur).removeClass('hide');
-
-      }, 10);
+    $rootScope.ACTIVE = function (pth) {
+		$('.nav-link').removeClass('active0');
+		$('.nav-link.'+pth).addClass('active0');
     };
     
-    $scope.ACTIVE(); // on load
-
-    $scope.$on('$routeChangeStart', function(next, current) { 
-       // console.log('change');
-       $scope.ACTIVE();
-    });
 
 });
 
@@ -15179,6 +15163,8 @@ app.controller('home-m', function ($scope, $rootScope, $location) {
 
 app.controller('projects', function ($scope, $routeParams, $route, $rootScope, $location, $timeout, $firebaseObject, $firebaseArray) {
 	
+	$rootScope.ACTIVE('projects');
+
 	// routeParams
 	$scope.p = $routeParams.p;
 	$scope.indx = $routeParams.indx;
@@ -15333,7 +15319,8 @@ app.controller('project_nav', function ($scope, $routeParams, $route, $rootScope
 
 
 app.controller('auth', function ($scope, $timeout, $location, $rootScope, Auth, $firebaseObject, $firebaseArray) {
-  
+  $rootScope.ACTIVE();
+
   $rootScope.notice("hand-spock-o","It's Safe!", "Knowing public user data allows this app to securely save your preferences.");
   $rootScope.inside=true;
   // $scope.get_active();
@@ -15523,6 +15510,7 @@ app.controller('account', function ($scope, $timeout, $rootScope, $location) {
 // ListenContrller
 app.controller('chat', function ($scope, Auth, $timeout, $rootScope, $firebaseObject, $firebaseArray) {
 
+    $rootScope.ACTIVE('chat');
 
 	$('.main-right.contain-it').removeClass('contain-it').addClass('contain-it_chat');
 	$('#talk1').addClass('contain-it pr');
@@ -15605,7 +15593,7 @@ app.controller('convos_nav', function ($scope, $routeParams, $route, $rootScope,
 
 app.controller('skills', function ($scope, $rootScope, $location, $timeout, $firebaseObject, $firebaseArray) {
 
-
+	$rootScope.ACTIVE('skills');
 
 
 	$scope.searchField = function() {

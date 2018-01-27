@@ -42,6 +42,13 @@
 			}
 			p.m{
 			}
+			a{
+				color: $yellow;
+				@extend .mono;
+				font-weight: bold;
+				font-size: 0.9em;
+				font-style: underline;
+			}
 		}
 		.column.actions {
 			text-transform: capitalize;

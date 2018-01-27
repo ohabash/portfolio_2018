@@ -1,6 +1,6 @@
 app.controller('skills', function ($scope, $rootScope, $location, $timeout, $firebaseObject, $firebaseArray) {
 
-
+	$rootScope.ACTIVE('skills');
 
 
 	$scope.searchField = function() {

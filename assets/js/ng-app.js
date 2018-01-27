@@ -35,7 +35,7 @@ app.run(["$rootScope", "$location", function($rootScope, $location) {
   $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
     if (error === "AUTH_REQUIRED") {
       $location.path("/login");
-      $rootScope.notice('user-times',"Login to Chat", "I need to know who you are.")
+      $rootScope.notice('user-times',"<a href=\"/login\">login</a> to Chat", "I need to know who you are.")
       console.log('AUTH_REQUIRED')
     }
   });

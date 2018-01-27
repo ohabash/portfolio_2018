@@ -6,31 +6,31 @@
 		<nav id="team" class="column1 dark-bg h100">
 			<ul class="teams">
 				<li>
-					<a class="nav-link" data-path="x" ng-click="ACTIVE();" href="/">
+					<a class="nav-link mission" href="/">
 						<i class="fa fa-bullseye" aria-hidden="true"></i>
 						<span>mission</span>
 					</a>
 				</li>
 				<li>
-					<a class="nav-link" data-path="xskills" ng-click="ACTIVE();" href="/skills">
+					<a class="nav-link skills"  href="/skills">
 						<i class="fa fa-magic" aria-hidden="true"></i>
 						<span>Skills</span>
 					</a>
 				</li>
 				<li>
-					<a class="nav-link" data-path="xprojects" ng-click="ACTIVE();" href="/projects">
+					<a class="nav-link projects"  href="/projects">
 						<i class="fa fa-briefcase" aria-hidden="true"></i>
 						<span>projects</span>
 					</a>
 				</li>
 				<li>
-					<a class="nav-link" data-path="xdownloads" ng-click="ACTIVE();" href="/downloads">
+					<a class="nav-link downloads"  href="/downloads">
 						<i class="fa fa-paper-plane" aria-hidden="true"></i>
 						<span>downloads</span>
 					</a>
 				</li>
 				<li>
-					<a class="nav-link" data-path="xchat" ng-click="ACTIVE();" href="/chat">
+					<a class="nav-link chat"  href="/chat">
 						<i class="fa fa-comments-o" aria-hidden="true"></i>
 						<span>chat</span>
 						<!-- <badge ng-if="unRead[u.uid]">{{unRead[u.uid]}}</badge> -->
@@ -38,6 +38,11 @@
 					</a>
 				</li>
 			</ul>
+			
+
+			<div class="pacewheel"><img src="assets/img/grid.svg"></div>
+
+
 			<div class="icon-nav">
 				<div data-tooltip="{{u.displayName}}" data-placement="top" ng-if="u">
 					<a class="profile_img {{$bg}}" href="login">

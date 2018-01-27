@@ -1,6 +1,7 @@
 app.controller('downloads', function ($scope, $location, Auth, $timeout, $route, $rootScope, $location) {
 	// console.log('downloads')
 	
+    $rootScope.ACTIVE('downloads');
 
 	$scope.downloads = [
 		{
@@ -43,7 +44,7 @@ app.controller('downloads', function ($scope, $location, Auth, $timeout, $route,
 
 	$scope.locked = function() {
 		$rootScope.slack('OH: Download rejected.')
-		$rootScope.notice("lock",'Download Locked — 550', "please login to download.");
+		$rootScope.notice("lock",'Download Locked — 550', "please <a href=\"/login\">login</a> to download.");
 	}
 
 	$scope.downloaded = function(i) {
