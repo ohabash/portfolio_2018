@@ -1,7 +1,7 @@
 
 
 app.controller('auth', function ($scope, $timeout, $location, $rootScope, Auth, $firebaseObject, $firebaseArray) {
-  $rootScope.ACTIVE();
+  // $rootScope.ACTIVE();
 
   $rootScope.notice("hand-spock-o","It's Safe!", "Knowing public user data allows this app to securely save your preferences.");
   $rootScope.inside=true;

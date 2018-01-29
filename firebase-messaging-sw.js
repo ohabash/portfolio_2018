@@ -17,5 +17,6 @@ const FCM = firebase.messaging();
 
 // only runs if not on the page
 FCM.setBackgroundMessageHandler( function(payload){
+	console.log('[firebase-messaging-sw.js] Received background message ', payload);
 	return self.registration.showNotification();
 });

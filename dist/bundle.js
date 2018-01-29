@@ -15309,7 +15309,7 @@ app.controller('project_nav', function ($scope, $routeParams, $route, $rootScope
 
 
 app.controller('auth', function ($scope, $timeout, $location, $rootScope, Auth, $firebaseObject, $firebaseArray) {
-  $rootScope.ACTIVE();
+  // $rootScope.ACTIVE();
 
   $rootScope.notice("hand-spock-o","It's Safe!", "Knowing public user data allows this app to securely save your preferences.");
   $rootScope.inside=true;
@@ -15743,10 +15743,10 @@ app.run(["$rootScope", "$location", function($rootScope, $location) {
 		if($location.$$path=="/chat"){
 			console.log('no need to log activity');
 		}else{
-			// console.log('new massage (FCM): ',payload);
+			console.log('new massage (FCM): ',payload);
 			var note = payload.notification;
 			$rootScope.notice("comments-o", note.title, note.body);
-			var profileRef = firebase.database().ref('profiles/'+$rootScope.u.uid+"/activity");
+			var profileRef = firebase.database().ref('profiles/'+$rootScope.u.uid);
 			profileRef.child('activity').transaction(current => {
 				return (current || 0) + 1;
 			});

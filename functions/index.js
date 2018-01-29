@@ -32,7 +32,7 @@ exports.newMSG = functions.database.ref('profiles/{uID}/chats/archive/{msgID}').
 
 	    // Notification details.
 	    const payload = {
-			notification: {
+			data: {
 				title: `New message: ${msg.display}`,
 				body: `${msg.text}`,
 				icon: 'https://vignette.wikia.nocookie.net/transformers-legends/images/0/0a/Logo-icon.png/revision/latest?cb=20131111205325'
