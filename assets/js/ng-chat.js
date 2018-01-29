@@ -43,7 +43,7 @@ app.controller('chat', function ($scope, Auth, $timeout, $rootScope, $firebaseOb
                 return (current || 0) - current;
             });
         });
-    },500);
+    },1000);
 
 
 

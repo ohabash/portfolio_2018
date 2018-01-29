@@ -24,7 +24,7 @@
 				data-chat="{{user.convo_id}}"
 				ng-if="!admin; user.email=='contactomarnow@gmail.com'"
 				ng-hide="user.uid == u.uid"
-				ng-init="switch_convo(profiless[0])"
+				ng-init="switch_convo(user)"
 			>
 				<div ng-include class="clearfix" src="'partials/convo_item.html'"></div>
 			</li>
