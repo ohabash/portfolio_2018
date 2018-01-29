@@ -28,6 +28,7 @@ app.controller('nav', function ($scope, $timeout, $route, $rootScope, $location)
 		$('.nav-link').removeClass('active0');
 		$('.nav-link.'+pth).addClass('active0');
     };
+
     
 
 });

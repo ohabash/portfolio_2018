@@ -29,11 +29,21 @@ app.controller('chat', function ($scope, Auth, $timeout, $rootScope, $firebaseOb
         }
     });
 
-        $timeout( function(){
-    if($scope.u){
-            $rootScope.notice("pencil-square-o","How to edit a message", "Just click on the blue text bubble to edit your message. ");
-    }
-        },20000);
+    // inform how to edit
+    $timeout( function(){
+        if($scope.u){
+                $rootScope.notice("pencil-square-o","How to edit a message", "Just click on the blue text bubble to edit your message. ");
+        }
+    },20000);
+
+    // zero out activity
+    $timeout( function(){
+        $scope.messages.$loaded( function(m){
+            firebase.database().ref('profiles/'+$scope.u.uid+"/activity").transaction(current => {
+                return (current || 0) - current;
+            });
+        });
+    },500);
 
 
 

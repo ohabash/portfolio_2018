@@ -13,16 +13,18 @@
 				ng-click="switch_convo(user)"
 				ng-hide="user.uid == u.uid"
 			>
+				<!-- <div ng-if="" ng-init="switch_convo(user)" class="hide"></div> -->
 			    <div ng-include class="clearfix" src="'partials/convo_item.html'"></div>
 			</li>
 
 			<!-- visitors only talk to omar -->
 			<li
-				ng-repeat="user in profiless | filter:'contactomarnow' | limitTo:1"
+				ng-repeat="user in profiless"
 				class="person white"
 				data-chat="{{user.convo_id}}"
-				ng-init="switch_convo(user)"
-				ng-if="!admin"
+				ng-if="!admin; user.email=='contactomarnow@gmail.com'"
+				ng-hide="user.uid == u.uid"
+				ng-init="switch_convo(profiless[0])"
 			>
 				<div ng-include class="clearfix" src="'partials/convo_item.html'"></div>
 			</li>

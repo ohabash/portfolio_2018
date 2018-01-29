@@ -30,6 +30,18 @@
 				&.fa-comments {
 					color: $blue;
 				}
+				&.fa-ban {
+					color: $red;
+					@extend .animated;
+					@extend .flash;
+					@extend .infinite;
+				}
+				&.fa-bell {
+					color: $green;
+					@extend .animated;
+					@extend .bounce;
+					@extend .infinite;
+				}
 			}
 		}
 		p{margin: 0;}

@@ -30,7 +30,7 @@ app.controller('notice', function ($scope, $location, Auth, $timeout, $route, $r
             $(".actions div").click( function(){
               removeAlert($(this).closest('.item2'))
             });
-            $timeout( function(){removeAlert($('.rand-'+rand).closest('.item2')) },8000);
+            $timeout( function(){removeAlert($('.rand-'+rand).closest('.item2')) },11000);
             // Remove displayed from queue
             queue.shift();
             // End of alerts array

@@ -34,7 +34,9 @@
 						<i class="fa fa-comments-o" aria-hidden="true"></i>
 						<span>chat</span>
 						<!-- <badge ng-if="unRead[u.uid]">{{unRead[u.uid]}}</badge> -->
-						<badge ng-if="unRead">{{unRead}}</badge>
+						<badge ng-if="profile.activity">
+							{{profile.activity}}
+						</badge>
 					</a>
 				</li>
 			</ul>

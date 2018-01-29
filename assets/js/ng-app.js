@@ -28,6 +28,7 @@ window.app = angular.module('appName',[
 	"moment-filter"
 ]);
 
+
 // check "$requireSignIn" when changing routes
 // https://github.com/firebase/angularfire/blob/master/docs/guide/user-auth.md#ngroute-example
 app.run(["$rootScope", "$location", function($rootScope, $location) {
@@ -173,3 +174,4 @@ app.directive('lazy', function($timeout) {
 
 
 require('./ng-controller.js');
+require('./firebase-config.js');

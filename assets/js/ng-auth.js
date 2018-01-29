@@ -8,51 +8,6 @@ app.controller('auth', function ($scope, $timeout, $location, $rootScope, Auth, 
   // $scope.get_active();
 
   
-  //signIn (email)
-    $scope.signIn = function() {
-      // login with google
-      $scope.u = null;
-      $scope.error = null;
-
-      Auth.$signInWithEmailAndPassword($scope.email, $scope.password).then(function(firebaseUser) {
-          $scope.u = firebaseUser;
-          $scope.uid = firebaseUser.uid;
-          $rootScope.notice("Welcome "+$scope.u.email, "Session Started. Enjoy.");
-          $location.path('/');
-          // console.log($scope.u)
-        }).catch(function(error) {
-          $scope.error = error;
-          console.log(error);
-          $rootScope.notice("<h1>"+error.code+"</h1>"+error.message);
-
-          $rootScope.notice("Would you like to <a id='creater'>Register a new Account</a> with these credentials?", "hide");
-          $timeout( function(){
-            $('.item1.hide').removeClass('hide');
-            $('#creater').click( function(){
-                console.log('creating...')
-                if($scope.email.indexOf('successpartners.com') != -1){
-                  Auth.$createUserWithEmailAndPassword($scope.email, $scope.password).then(function(firebaseUser) {
-                    $rootScope.notice("<h1>Account Created</h1> Welcome "+firebaseUser.email);
-                  }).catch(function(error) {
-                    $rootScope.notice("<h1>"+error.code+"</h1>"+error.message);
-                  });
-                }else{
-                  $rootScope.notice("only successpartners.com allowed");
-                }
-              });
-          },3000);
-          //   $('#creater').click( function(){
-          //     console.log('creating...')
-          //     Auth.$createUserWithEmailAndPassword($scope.email, $scope.password).then(function(firebaseUser) {
-          //       $rootScope.notice("<h1>Account Created</h1> Welcome "+firebaseUser.email);
-          //     }).catch(function(error) {
-          //       $rootScope.notice("<h1>"+error.code+"</h1>"+error.message);
-          //     });
-          //   })
-
-
-        });
-    };
     
 
 

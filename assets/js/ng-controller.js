@@ -13,7 +13,7 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 	// backgrounds
 	$scope.$bg = 'bg3';
 	$scope.bg = function(bg) {
-		console.log(bg)
+		// console.log(bg)
 		$scope.$bg = bg;
 	};
 	
@@ -33,7 +33,7 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 			'username': "test"
 		})
 		.then(function (response) {
-			console.log(response)
+			// console.log(response)
 			return response;
 		});
 	};
@@ -42,15 +42,12 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 	// auth status
 	$rootScope.admin = false;
 	Auth.$onAuthStateChanged(function(firebaseUser) {
-		$scope.u = firebase.auth().currentUser;
-		$rootScope.u = firebase.auth().currentUser;
-		console.log('current user: ',$scope.u);
+		$rootScope.u = $scope.u = firebase.auth().currentUser;
+		// console.log('current user: ',$scope.u);
 		if (firebaseUser) {
-			// $location.path('/');
 			$scope.getProfiles(firebaseUser);
-			// $rootScope.notice("Welcome "+$scope.u.email+"! ", "green-bg white");
+			$rootScope.initFCM($scope.u.uid);
 			$rootScope.notice("magic", "welcome "+$scope.u.displayName, 'Take a look around.');
-
 			if ($scope.u.email == "contactomarnow@gmail.com") {
 				$rootScope.notice("magic","You are an admin", "You will notice extra tools.");
 				$rootScope.admin = true;
@@ -152,7 +149,7 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 	$scope.$on('$routeChangeStart', function(next, current) { 
 		$timeout(function(){
 		if($scope.busy_obj){
-			console.log('its on')
+			// console.log('its on')
 			$scope.busy_obj[$rootScope.profile.uid] = false;
 			$scope.busy_obj.$save();
 		}
@@ -161,9 +158,6 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 			$scope.edit_off(true);
 		}
 		$('.main-right.contain-it_chat').removeClass('contain-it_chat').addClass('contain-it');
-		$timeout( function(){
-			($scope.messages) ? $scope.countUnviewed() : console.log('no need to count');
-		},2000);
 	});
 	$timeout( function(){
 		($scope.messages) ? $scope.watch() : console.error('watch');
@@ -183,13 +177,13 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 			});
 			return sorted[0]+'_'+sorted[1]
 		},
-		get_convo: function (convo_id){
-			var ref = firebase.database().ref('/chats/').child(convo_id);
+		get_convo: function (WHO){
+			var ref = firebase.database().ref('profiles/'+WHO.uid).child('/chats/');
 			$scope.this_convo_obj = $firebaseObject(ref);
 	    	return $firebaseArray(ref);
 		},
-		get_msgs: function (convo_id){
-			var ref = firebase.database().ref('/chats/').child(convo_id+"/archive");
+		get_msgs: function (WHO){
+			var ref = firebase.database().ref('profiles/'+WHO.uid+'/chats/').child("/archive");
 			$scope.convo_obj = $firebaseObject(ref);
 	    	return $firebaseArray(ref);
 		},
@@ -201,15 +195,16 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 				email: $rootScope.u.email,
 				read: false,
 				time: new Date().valueOf(),
-				uid: $rootScope.u.uid
+				uid: $rootScope.u.uid,
+				uid_to: $scope.him.uid
 			}
 			data['read_'+$rootScope.profile.uid] = true;
 			data['read_'+$scope.him.uid] = false;
 			$scope.messages.$add(data);
 			$('#msgInput').val('');
 		},
-		set_busy: function (me,him,convo){
-			var set_ref = firebase.database().ref('/chats/'+convo).child("busy");
+		set_busy: function (me,him,WHO){
+			var set_ref = firebase.database().ref('profiles/'+WHO.uid+'/chats/').child("busy");
 			$scope.busy_obj = $firebaseObject(set_ref);
 			$scope.busy_arr = $firebaseArray(set_ref);
 			$scope.busy_obj[me] = false;
@@ -239,29 +234,29 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 	$scope.last ={};
 	// $scope.unRead ={};
 	$rootScope.switch_convo = function(talking_to, init) {
-		console.log('switch_convo');
+		// console.log('switch_convo');
 		$scope.him = talking_to;
 		if($rootScope.admin){
-			var convo = $scope.him.displayName;
+			var WHO = $scope.him;
 		}else{
-			var convo = $rootScope.u.displayName;
+			var WHO = $rootScope.u;
 		}
-		// $scope.convo_id = chat.make_convo_id([talking_to.uid, $rootScope.profile.uid]);
-		$scope.convo_id = 'convo_'+convertToSlug(convo);
-		$scope.convo = chat.get_convo($scope.convo_id);
-		$scope.messages = chat.get_msgs($scope.convo_id);
-		$scope.busy = chat.set_busy(talking_to.uid, $rootScope.profile.uid,$scope.convo_id);
+		$scope.convo = chat.get_convo(WHO);
+		$scope.messages = chat.get_msgs(WHO);
+		$scope.busy = chat.set_busy(talking_to.uid, $rootScope.profile.uid,WHO);
 		$scope.messages.$loaded( function(m){
 			var len = m.length-1;
 			$scope.last[talking_to.uid] = m[len];
 		});
 		$timeout(function(){
-		if(typeof $scope.busy_obj[$rootScope.profile.uid] == 'undefined'){
-			$scope.busy_obj[$rootScope.profile.uid] = false;
-			$scope.busy_obj.$save();
-		}
+			if(typeof $scope.busy_obj[$rootScope.profile.uid] == 'undefined'){
+				$scope.busy_obj[$rootScope.profile.uid] = false;
+				$scope.busy_obj.$save();
+			}
 		},2000);
 	};
+
+
 
 
 	$scope.addMessage = function(t) {
@@ -279,25 +274,15 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 
 
 	$scope.watch = function(e) {
-		console.log('watch');
-	 	$scope.convo_obj.$watch(function(a) {
- 			$scope.countUnviewed();
-	    });
+		// console.log('watch');
+		firebase.database().ref('profiles/'+$scope.u.uid+"/activity").on('value', function(a) {
+	    	// console.log('activity')
+	    	$timeout(function() {
+	    		$scope.changeTitle($rootScope.profile.activity)
+			}, 200);
+		});
 	}
 
-	$scope.countUnviewed = function() {
-		console.log('countUnviewed');
-	  $timeout(function() {
-	  	$scope.unRead = 0;
-	    $.each($scope.messages, function(){
-	      if(!this['read_'+$rootScope.profile.uid]){
-	        $scope.unRead++;
-	      }
-	    });
-		if($scope.unRead){$scope.alertLatest()};
-      	changeTitle($scope.unRead);
-	  }, 1000);
-	};
 
 	$scope.alertLatest = function() {
 	  var msg_count = $scope.messages.length;
@@ -307,14 +292,16 @@ app.controller('main', function ($scope, $http, Auth,  $timeout, $route, $rootSc
 	};
 
 	// page title
-	function changeTitle(count) {
+	$scope.changeTitle = function(count) {
+		// console.log('changeTitle')
 	  if(count<1){
 	    document.title = "Omar Habash";
 	  }else{
 	    var newTitle = '(' + count + ') ' + "Omar Habash";
 	    document.title = newTitle;
+	    // $scope.alertLatest();
 	  }
-	}
+	};
 
 
 
@@ -349,11 +336,11 @@ function isMobile() {
 
 // controllers
 window.convertToSlug = function(Text) {
-    return Text
-        .toLowerCase()
-        .replace(/ /g,'-')
-        .replace(/[^\w-]+/g,'')
-        ;
+	return Text
+		.toLowerCase()
+		.replace(/ /g,'-')
+		.replace(/[^\w-]+/g,'')
+	;
 }
 
 
